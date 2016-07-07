@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
     /*Resets quantity and price to 0*/
     public void Reset(View view) {
+        quantity =0;
         display(0);
         displayMessage("");
+        displayThanks("");
     }
 
     /* Decrease quantity */
