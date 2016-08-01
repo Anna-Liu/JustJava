@@ -301,8 +301,8 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_alignParentBottom="true"
-            android:onClick="getTotal"
-            android:text="Get Total" />
+            android:onClick="submitOrder"
+            android:text="Submit Order" />
 
     </RelativeLayout>
 

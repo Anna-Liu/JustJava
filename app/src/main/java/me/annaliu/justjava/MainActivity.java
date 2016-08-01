@@ -1,5 +1,7 @@
 package me.annaliu.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 //TODO make icon transparent
 //TODO make name field static after input
 //TODO instant running total of price after each selection
+//TODO make milk and sugar option mandatory
+
     /**
      * Global variables
      */
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the get total button is clicked.
      */
-    public void getTotal(View view) {
+    public void submitOrder(View view) {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipCream);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         CheckBox caramelCheckBox = (CheckBox) findViewById(R.id.caramel);
@@ -45,9 +49,23 @@ public class MainActivity extends AppCompatActivity {
         String customerName = name.getText().toString();
 
         String total = calculatePrice(quantity, hasWhippedCream, hasCaramel, hasChocolate); //calls the calculatePrice method and stores the return value
-        String message = createOrderSummary(total, customerName, hasWhippedCream, hasCaramel, hasChocolate);
-        displayMessage(message);
+        String orderSummary = createOrderSummary(total, customerName, hasWhippedCream, hasCaramel, hasChocolate);
+//        displayMessage(orderSummary);
+
+        /**
+         * Email intent to send order summary by email
+         */
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:test@example.com")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order for " + customerName);
+        intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, "Send Order By:"));
+        } else {
+            Toast.makeText(this, "Error: There are no email clients installed.", Toast.LENGTH_LONG).show();
+        }
     }
+
 
     /**
      * Calculates the price of the order.
