@@ -14,7 +14,11 @@ import java.text.DecimalFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-
+//TODO change checked checkbox and radiobutton colors
+//TODO change milk choices into two lines
+//TODO make icon transparent
+//TODO make name field static after input
+//TODO instant running total of price after each selection
     /**
      * Global variables
      */
@@ -54,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         String basePrice = getString(R.string.price); //retrieves string price from string.xml
         Double formattedPrice = Double.parseDouble(basePrice); //converts string to double
 
-        if (WhippedCream){
+        if (WhippedCream) {
             formattedPrice += 0.2;
         }
-        if (Caramel){
+        if (Caramel) {
             formattedPrice += 0.2;
         }
-        if (Chocolate){
+        if (Chocolate) {
             formattedPrice += 0.5;
         }
 
@@ -72,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Creates an order summary
      *
-     * @param total is the order total
+     * @param total        is the order total
      * @param customerName is the customer's name from user input.
      * @param addWhipCream shows if customer wants whip cream.
-     * @param addCaramel shows if customer wants caramel.
+     * @param addCaramel   shows if customer wants caramel.
      * @param addChocolate shows if customer wants chocolate.
      */
     private String createOrderSummary(String total, String customerName, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*Resets quantity and price to 0*/
-    public void Reset(View view) {
+    public void Reset(View view) { //TODO clear choices when reset button is hit
         quantity = 0;
         displayQuantity(0);
         displayMessage("");
@@ -103,11 +107,10 @@ public class MainActivity extends AppCompatActivity {
 
     /* Decrease quantity */
     public void decrement(View view) {
-      if (quantity > 0) {
+        if (quantity > 0) {
             quantity -= 1;
-        }
-        if (quantity == 0) {
-            Toast.makeText(this, "You cannot have less than 0 coffee", Toast.LENGTH_SHORT).show(); //toast not showing
+        } else {
+            Toast.makeText(this, "Please select a valid quantity", Toast.LENGTH_SHORT).show();
         }
         displayQuantity(quantity);
     }
