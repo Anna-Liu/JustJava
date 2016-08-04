@@ -16,7 +16,6 @@ import java.text.DecimalFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-//TODO change checked checkbox and radiobutton colors
 //TODO change milk choices into two lines
 //TODO make icon transparent
 //TODO make name field static after input
