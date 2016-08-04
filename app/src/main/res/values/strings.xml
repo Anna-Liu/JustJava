@@ -1,4 +1,90 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!--//////////////////////////-->
+    <!-- App Order Screen Strings -->
+    <!--//////////////////////////-->
+
+    <!-- Title for the application. [CHAR LIMIT=12] -->
     <string name="app_name">Just Java</string>
+
+    <!-- Price of base coffee. [CHAR LIMIT=4] -->
     <string name="price">2.75</string>
+
+    <!-- Title for the order summary. [CHAR LIMIT=30] -->
+    <string name="order_summary">Order Summary</string>
+
+    <!-- Text of submit order button. [CHAR LIMIT=30] -->
+    <string name="submit_order">Submit Order</string>
+
+    <!-- Text for the reset button to clear the order page. [CHAR LIMIT=10] -->
+    <string name="reset">Reset</string>
+
+    <!-- Title for the coffee quantity section. [CHAR LIMIT=30] -->
+    <string name="quantity">Quantity</string>
+
+    <!-- Extras for the coffee with price under the customization options section. [CHAR LIMIT=30] -->
+    <string name="chocolate">Chocolate <xliff:g id="chocolate_price">(+$0.50)</xliff:g></string>
+    <string name="whip_cream">Whip Cream <xliff:g id="whip_cream_price">(+$0.20)</xliff:g></string>
+    <string name="caramel">Caramel <xliff:g id="caramel_price">(+$0.20)</xliff:g></string>
+
+    <!-- Title for the extra toppings section which adds on to the base price. [CHAR LIMIT=30] -->
+    <string name="extra">Extras</string>
+
+    <!-- Choices for whether a particular option is wanted or not [CHAR LIMIT = 8]-->
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
+    <!-- Customization options for the coffee. [CHAR LIMIT=20] -->
+    <string name="sugar">Sugar</string>
+    <string name="milk">Milk</string>
+
+    <!-- Title for the coffee quantity section. [CHAR LIMIT=8] -->
+    <string name="none">None</string>
+    <string name="soy">Soy</string>
+    <string name="almond">Almond</string>
+    <string name="skim">Skim</string>
+    <string name="whole">Whole</string>
+    <string name="cream">Cream</string>
+
+    <!-- Title for the coffee customization options. Includes milk, sugar, and extra toppings. [CHAR LIMIT=30] -->
+    <string name="customization_opt">Customization Options</string>
+
+    <!-- Text for the base price of a coffee followed by the cost in a separate string [CHAR LIMIT=30] -->
+    <string name="coffee_base_price">Coffee Base Price: $</string>
+
+    <!-- Hint text displayed in empty field for user's name. [CHAR LIMIT=30] -->
+    <string name="customer_name">"Customer's name"</string>
+
+    <!-- Toast text that pops up when the user tries to decrease the quantity to less than 0. [CHAR LIMIT=100] -->
+    <string name="quantity_toast">Please select a valid quantity</string>
+
+
+    <!--///////////////////////-->
+    <!-- Order Summary Strings -->
+    <!--///////////////////////-->
+
+    <!-- Order summary message for the body of the email.[CHAR LIMIT=None] -->
+    <string name="name">Name: <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
+    <string name="quantity_summary">QUANTITY: <xliff:g id="coffeeQuantity" example="2">%d</xliff:g></string>
+    <string name="whip_cream_summary">Whipped Cream: <xliff:g id="addCream" example="true">%b</xliff:g></string>
+    <string name="caramel_summary">Caramel: <xliff:g id="addCaramel" example="true">%b</xliff:g></string>
+    <string name="chocolate_summary">Chocolate: <xliff:g id="addChocolate" example="true">%b</xliff:g></string>
+    <string name="total">TOTAL: $<xliff:g id="totalPrice" example="5.50">%s</xliff:g></string>
+
+    <!--///////////////-->
+    <!-- Email strings -->
+    <!--///////////////-->
+
+    <!-- Business' email [CHAR LIMIT=100] -->
+    <string name="email">mailto:test@example.com</string>
+
+    <!-- Email subject text. [CHAR LIMIT=100] -->
+    <string name="subject">Just Java Order for <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
+
+    <!-- Text for email app selector. Prompts user to select with email client they want to use.[CHAR LIMIT=30] -->
+    <string name="email_chooser">Send Order By:</string>
+
+    <!-- Toast text that pops up when the order button is clicked and there is no email application to email the order from. [CHAR LIMIT=100] -->
+    <string name="email_error_toast">Error: There are no email clients installed.</string>
+
 </resources>

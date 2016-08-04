@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity {
          * Email intent to send order summary by email
          */
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:test@example.com")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order for " + customerName);
+        intent.setData(Uri.parse(getString(R.string.email))); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, customerName));
         intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(Intent.createChooser(intent, "Send Order By:"));
+            startActivity(Intent.createChooser(intent, getString(R.string.email_chooser)));
         } else {
-            Toast.makeText(this, "Error: There are no email clients installed.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.email_error_toast), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -101,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
      * @param addChocolate shows if customer wants chocolate.
      */
     private String createOrderSummary(String total, String customerName, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
-        String summaryMessage = "NAME: " + customerName;
-        summaryMessage += "\n\nQUANTITY: " + quantity;
-        summaryMessage += "\n\nWhipped Cream: " + addWhipCream;
-        summaryMessage += "\nCaramel: " + addCaramel;
-        summaryMessage += "\nChocolate: " + addChocolate;
-        summaryMessage += "\n\nTOTAL: $" + total;
+        String summaryMessage = getString(R.string.name, customerName);
+        summaryMessage += "\n\n" + getString(R.string.quantity_summary, quantity);
+        summaryMessage += "\n\n" + getString(R.string.whip_cream_summary, addWhipCream);
+        summaryMessage += "\n" + getString(R.string.caramel_summary, addCaramel);
+        summaryMessage += "\n" + getString(R.string.chocolate_summary, addChocolate);
+        summaryMessage += "\n\n"+ getString(R.string.total, total);
         return summaryMessage;
     }
 
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         if (quantity > 0) {
             quantity -= 1;
         } else {
-            Toast.makeText(this, "Please select a valid quantity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.quantity_toast), Toast.LENGTH_SHORT).show();
         }
         displayQuantity(quantity);
     }

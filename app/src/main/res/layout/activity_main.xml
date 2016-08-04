@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:hint="Customer's name"
+        android:hint="@string/customer_name"
         android:inputType="textCapWords" />
 
     <RelativeLayout
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Coffee Base Price: $"
+            android:text="@string/coffee_base_price"
             android:textAllCaps="true"
             android:textColor="#666666"
             android:textSize="18sp" />
@@ -47,7 +47,7 @@
         android:layout_marginBottom="5dp"
         android:background="#eeeeee"
         android:padding="5dp"
-        android:text="Customization Options"
+        android:text="@string/customization_opt"
         android:textAllCaps="true"
         android:textColor="#666666"
         android:textSize="18sp"
@@ -63,13 +63,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="20dp">
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Milk"
+                android:text="@string/milk"
                 android:textAllCaps="true"
                 android:textColor="#666666"
                 android:textSize="16sp" />
@@ -78,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp">
+                android:paddingLeft="10dp">
 
                 <RadioGroup
                     android:layout_width="wrap_content"
@@ -87,44 +88,44 @@
 
                     <RadioButton
                         android:id="@+id/wholeMilk"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Whole"
+                        android:text="@string/whole"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/skimMilk"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Skim"
+                        android:text="@string/skim"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/cream"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Cream"
+                        android:text="@string/cream"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/almondMilk"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Almond"
+                        android:text="@string/almond"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/soyMilk"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Soy"
+                        android:text="@string/soy"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/noMilk"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="None"
+                        android:text="@string/none"
                         android:textColor="#666666" />
                 </RadioGroup>
             </LinearLayout>
@@ -133,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Sugar"
+                android:text="@string/sugar"
                 android:textAllCaps="true"
                 android:textColor="#666666"
                 android:textSize="16sp" />
@@ -142,7 +143,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp">
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp">
 
                 <RadioGroup
                     android:layout_width="wrap_content"
@@ -151,16 +153,16 @@
 
                     <RadioButton
                         android:id="@+id/yesSugar"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="#666666" />
 
                     <RadioButton
                         android:id="@+id/noSugar"
-                        android:layout_width="90dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="No"
+                        android:text="@string/no"
                         android:textColor="#666666" />
                 </RadioGroup>
             </LinearLayout>
@@ -169,7 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Extras"
+                android:text="@string/extra"
                 android:textAllCaps="true"
                 android:textColor="#666666"
                 android:textSize="16sp" />
@@ -178,9 +180,11 @@
                 android:id="@+id/caramel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:paddingLeft="20dp"
-                android:text="Caramel (+$0.20)"
+                android:paddingStart="20dp"
+                android:text="@string/caramel"
                 android:textColor="#666666"
                 android:textSize="16sp" />
 
@@ -188,9 +192,11 @@
                 android:id="@+id/whipCream"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:paddingLeft="20dp"
-                android:text="Whip Cream (+$0.20)"
+                android:paddingStart="20dp"
+                android:text="@string/whip_cream"
                 android:textColor="#666666"
                 android:textSize="16sp" />
 
@@ -198,9 +204,11 @@
                 android:id="@+id/chocolate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:paddingLeft="20dp"
-                android:text="Chocolate (+$0.50)"
+                android:paddingStart="20dp"
+                android:text="@string/chocolate"
                 android:textColor="#666666"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -213,7 +221,7 @@
         android:layout_marginTop="16dp"
         android:background="#eeeeee"
         android:padding="5dp"
-        android:text="Quantity"
+        android:text="@string/quantity"
         android:textAllCaps="true"
         android:textColor="#666666"
         android:textSize="18sp"
@@ -223,7 +231,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="15dp">
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp">
 
         <Button
             android:layout_width="40dp"
@@ -249,13 +258,12 @@
 
         <Button
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:background="#ffffff"
             android:onClick="Reset"
-            android:text="Reset"
+            android:text="@string/reset"
             android:textColor="#bbbbbb" />
 
     </LinearLayout>
@@ -268,7 +276,7 @@
         android:layout_marginTop="10dp"
         android:background="#eeeeee"
         android:padding="5dp"
-        android:text="Order Summary"
+        android:text= "@string/order_summary"
         android:textAllCaps="true"
         android:textColor="#666666"
         android:textSize="18sp"
@@ -285,6 +293,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="5sp"
             android:paddingBottom="10dp"
             android:text=" "
@@ -302,7 +311,7 @@
             android:layout_height="55dp"
             android:layout_alignParentBottom="true"
             android:onClick="submitOrder"
-            android:text="Submit Order" />
+            android:text="@string/submit_order" />
 
     </RelativeLayout>
 

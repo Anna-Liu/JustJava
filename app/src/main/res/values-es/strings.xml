@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- App Order Screen Strings -->
+
+    <string name="app_name">Sólo Java</string>
+    <string name="price">2.75</string>
+    <string name="order_summary">Resumen del Orden</string>
+    <string name="submit_order">Envio Orden</string>
+    <string name="reset">Reiniciar</string>
+    <string name="quantity">Cantidad</string>
+    <string name="chocolate">Chocolate <xliff:g id="chocolate_price">(+$0.50)</xliff:g></string>
+    <string name="whip_cream">Crema Batida <xliff:g id="whip_cream_price">(+$0.20)</xliff:g></string>
+    <string name="caramel">Caramelo <xliff:g id="caramel_price">(+$0.20)</xliff:g></string>
+    <string name="extra">Adicional</string>
+    <string name="no">No</string>
+    <string name="yes">Sí</string>
+    <string name="sugar">Azúcar</string>
+    <string name="milk">Leche</string>
+    <string name="none">Ninguna</string>
+    <string name="soy">Soja</string>
+    <string name="almond">Almendra</string>
+    <string name="skim">Desnatada</string>
+    <string name="whole">Entera</string>
+    <string name="cream">Crema</string>
+    <string name="customization_opt">Opciones de Personalización</string>
+    <string name="coffee_base_price">Precio Base del Café: $</string>
+    <string name="customer_name">Nombre del Cliente</string>
+    <string name="quantity_toast">Escoja una cantidad válido por favor</string>
+
+
+    <!-- Order Summary Strings -->
+
+    <string name="name">Nombre: <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
+    <string name="quantity_summary">CANTIDAD: <xliff:g id="coffeeQuantity" example="2">%d</xliff:g></string>
+    <string name="whip_cream_summary">Crema Batida: <xliff:g id="addCream" example="true">%b</xliff:g></string>
+    <string name="caramel_summary">Caramelo: <xliff:g id="addCaramel" example="true">%b</xliff:g></string>
+    <string name="chocolate_summary">Chocolate: <xliff:g id="addChocolate" example="true">%b</xliff:g></string>
+    <string name="total">TOTAL: $<xliff:g id="totalPrice" example="5.50">%s</xliff:g></string>
+
+
+    <!-- Email strings -->
+
+    <string name="email">mailto:test@example.com</string>
+    <string name="subject">Sólo Java Orden para <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
+    <string name="email_chooser">Para Enviar Orden:</string>
+    <string name="email_error_toast">Error: No hay aplicación de correo electrónico</string>
+
+</resources>
