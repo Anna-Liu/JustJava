@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Global variables
      */
-    int quantity = 0; //number of coffees
+    public int quantity = 0; //number of coffees
+    public EditText customerNameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,24 +108,21 @@ public class MainActivity extends AppCompatActivity {
         summaryMessage += "\n\n" + getString(R.string.whip_cream_summary, addWhipCream);
         summaryMessage += "\n" + getString(R.string.caramel_summary, addCaramel);
         summaryMessage += "\n" + getString(R.string.chocolate_summary, addChocolate);
-        summaryMessage += "\n\n"+ getString(R.string.total, total);
+        summaryMessage += "\n\n" + getString(R.string.total, total);
         return summaryMessage;
     }
 
-    /* Increase quantity */
+    /**
+     * Increase quantity
+     *  */
     public void increment(View view) {
         quantity += 1;
         displayQuantity(quantity);
     }
 
-    /*Resets quantity and price to 0*/
-    public void Reset(View view) { //TODO clear choices when reset button is hit
-        quantity = 0;
-        displayQuantity(0);
-        displayMessage("");
-    }
-
-    /* Decrease quantity */
+    /**
+    * Decrease quantity
+    * */
     public void decrement(View view) {
         if (quantity > 0) {
             quantity -= 1;
@@ -130,6 +130,29 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.quantity_toast), Toast.LENGTH_SHORT).show();
         }
         displayQuantity(quantity);
+    }
+
+
+    /* *
+    * Resets quantity to 0, clears name field and selected choices
+    * */
+    //TODO clear choices when reset button is hit
+    public void Reset(View view) {
+       /* Resets quantity to 0 */
+        quantity = 0;
+        displayQuantity(0);
+
+        /* Clears name field */
+        customerNameField = (EditText) findViewById(R.id.nameField);
+        customerNameField.getText().clear();
+
+        /* Create instances of the RadioGroup and clears selected radio buttons */
+        RadioGroup milkGroup = (RadioGroup)findViewById(R.id.milk);
+        RadioGroup sugarGroup = (RadioGroup)findViewById(R.id.sugar);
+        milkGroup.clearCheck();
+        sugarGroup.clearCheck();
+
+        //displayMessage("");
     }
 
 

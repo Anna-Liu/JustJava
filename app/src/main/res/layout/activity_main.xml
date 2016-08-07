@@ -12,7 +12,7 @@
         android:id="@+id/nameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/customer_name"
         android:inputType="textCapWords" />
 
@@ -22,44 +22,37 @@
 
         <TextView
             android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/coffee_base_price"
-            android:textAllCaps="true"
-            android:textColor="#666666"
-            android:textSize="18sp" />
+            style="@style/basePrice"
+            android:text="@string/coffee_base_price" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            style="@style/basePrice"
             android:layout_toEndOf="@id/price"
             android:layout_toRightOf="@id/price"
-            android:text="@string/price"
-            android:textColor="#666666"
-            android:textSize="18sp" />
+            android:text="@string/price" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:onClick="Reset"
+            android:text="@string/reset"
+            android:textColor="#bbbbbb" />
     </RelativeLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="#eeeeee"
-        android:padding="5dp"
-        android:text="@string/quantity"
-        android:textAllCaps="true"
-        android:textColor="#666666"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        style="@style/headers"
+        android:text="@string/quantity" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="40dp"
@@ -83,204 +76,121 @@
             android:onClick="increment"
             android:text="+" />
 
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffffff"
-            android:onClick="Reset"
-            android:text="@string/reset"
-            android:textColor="#bbbbbb" />
-
     </LinearLayout>
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="#eeeeee"
-        android:padding="5dp"
-        android:text="@string/customization_opt"
-        android:textAllCaps="true"
-        android:textColor="#666666"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        style="@style/headers"
+        android:text="@string/customization_opt" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
-        android:layout_marginBottom="10dp"
         android:fadeScrollbars="false">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp">
+            android:paddingLeft="8dp"
+            android:paddingStart="8dp">
 
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/milk"
-                android:textAllCaps="true"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/subHeaders"
+                android:text="@string/milk" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp">
+            <RadioGroup
+                android:id="@+id/milk"
+                style="@style/radioGroup"
+                android:orientation="horizontal">
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/wholeMilk"
+                    style="@style/radioButtons"
+                    android:text="@string/whole" />
 
-                    <RadioButton
-                        android:id="@+id/wholeMilk"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/whole"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/skimMilk"
+                    style="@style/radioButtons"
+                    android:text="@string/skim" />
 
-                    <RadioButton
-                        android:id="@+id/skimMilk"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/skim"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/cream"
+                    style="@style/radioButtons"
+                    android:text="@string/cream" />
 
-                    <RadioButton
-                        android:id="@+id/cream"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cream"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/almondMilk"
+                    style="@style/radioButtons"
+                    android:text="@string/almond" />
 
-                    <RadioButton
-                        android:id="@+id/almondMilk"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/almond"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/soyMilk"
+                    style="@style/radioButtons"
+                    android:text="@string/soy" />
 
-                    <RadioButton
-                        android:id="@+id/soyMilk"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/soy"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/noMilk"
+                    style="@style/radioButtons"
+                    android:text="@string/none" />
+            </RadioGroup>
 
-                    <RadioButton
-                        android:id="@+id/noMilk"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/none"
-                        android:textColor="#666666" />
-                </RadioGroup>
-            </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/sugar"
-                android:textAllCaps="true"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/subHeaders"
+                android:text="@string/sugar" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingStart="10dp">
+            <RadioGroup
+                android:id="@+id/sugar"
+                style="@style/radioGroup"
+                android:orientation="horizontal">
 
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/yesSugar"
+                    style="@style/radioButtons"
+                    android:text="@string/yes" />
 
-                    <RadioButton
-                        android:id="@+id/yesSugar"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/yes"
-                        android:textColor="#666666" />
+                <RadioButton
+                    android:id="@+id/noSugar"
+                    style="@style/radioButtons"
+                    android:text="@string/no" />
+            </RadioGroup>
 
-                    <RadioButton
-                        android:id="@+id/noSugar"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/no"
-                        android:textColor="#666666" />
-                </RadioGroup>
-            </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/extra"
-                android:textAllCaps="true"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/subHeaders"
+                android:text="@string/extra" />
 
             <CheckBox
                 android:id="@+id/caramel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:paddingLeft="20dp"
-                android:paddingStart="20dp"
-                android:text="@string/caramel"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/checkBoxes"
+                android:text="@string/caramel" />
 
             <CheckBox
                 android:id="@+id/whipCream"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:paddingLeft="20dp"
-                android:paddingStart="20dp"
-                android:text="@string/whip_cream"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/checkBoxes"
+                android:text="@string/whip_cream" />
 
             <CheckBox
                 android:id="@+id/chocolate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:paddingLeft="20dp"
-                android:paddingStart="20dp"
-                android:text="@string/chocolate"
-                android:textColor="#666666"
-                android:textSize="16sp" />
+                style="@style/checkBoxes"
+                android:text="@string/chocolate" />
         </LinearLayout>
     </ScrollView>
 
 
-<!-- TODO move reset button-->
-<!-- TODO move order summary to new screen -->
+    <!-- TODO move reset button-->
+    <!-- TODO move order summary to new screen -->
     <!--
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="#eeeeee"
-        android:padding="5dp"
+        android:padding="8dp"
         android:text= "@string/order_summary"
         android:textAllCaps="true"
         android:textColor="#666666"
@@ -297,10 +207,10 @@
             android:id="@+id/order_summary_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5sp"
-            android:paddingBottom="10dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8sp"
+            android:paddingBottom="8dp"
             android:text=" "
             android:textColor="#888888"
             android:textSize="15sp" />
@@ -308,12 +218,12 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="55dp">
+        android:layout_height="56dp">
 
         <Button
             android:id="@+id/total_button"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="56dp"
             android:layout_alignParentBottom="true"
             android:onClick="submitOrder"
             android:text="@string/submit_order" />
