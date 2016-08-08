@@ -103,7 +103,7 @@
                 android:text="@string/milk" />
 
             <RadioGroup
-                android:id="@+id/milk"
+                android:id="@+id/milk1"
                 style="@style/radioGroup"
                 android:orientation="horizontal">
 
@@ -121,6 +121,12 @@
                     android:id="@+id/cream"
                     style="@style/radioButtons"
                     android:text="@string/cream" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/milk2"
+                style="@style/radioGroup"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/almondMilk"
@@ -182,7 +188,6 @@
     </ScrollView>
 
 
-    <!-- TODO move reset button-->
     <!-- TODO move order summary to new screen -->
     <!--
     <TextView

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,8 +19,7 @@ import java.text.DecimalFormat;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-//TODO change milk choices into two lines
-//TODO make icon transparent
+
 //TODO make name field static after input
 //TODO instant running total of price after each selection
 //TODO make milk and sugar option mandatory
@@ -29,17 +29,56 @@ public class MainActivity extends AppCompatActivity {
      */
     public int quantity = 0; //number of coffees
     public EditText customerNameField;
+    private RadioGroup milkOptions1;
+    private RadioGroup milkOptions2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        milkOptions1 = (RadioGroup) findViewById(R.id.milk1);
+        milkOptions2 = (RadioGroup) findViewById(R.id.milk2);
+        milkOptions1.setOnCheckedChangeListener(listener1);
+        milkOptions2.setOnCheckedChangeListener(listener2);
+
     }
+    /**
+     * This method clears the 2nd milk options radioGroup when options from the 1st group is selected.
+     */
+    private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            if (i != -1){
+                milkOptions2.setOnCheckedChangeListener(null); //removes listener
+                milkOptions2.clearCheck(); //clears the 2nd radio group
+                milkOptions2.setOnCheckedChangeListener(listener2); // resets listener
+            }
+        }
+    };
+
+    /**
+     * This method clears the 1st milk options radioGroup when options from the 2nd group is selected.
+     */
+    private RadioGroup.OnCheckedChangeListener listener2 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+            if (i != -1){
+                milkOptions1.setOnCheckedChangeListener(null); //removes listener
+                milkOptions1.clearCheck(); //clears the 1st radio group
+                milkOptions1.setOnCheckedChangeListener(listener1); //resets listener
+            }
+        }
+    };
+
+
 
     /**
      * This method is called when the get total button is clicked.
      */
     public void submitOrder(View view) {
+
+
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipCream);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         CheckBox caramelCheckBox = (CheckBox) findViewById(R.id.caramel);
@@ -114,15 +153,15 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Increase quantity
-     *  */
+     */
     public void increment(View view) {
         quantity += 1;
         displayQuantity(quantity);
     }
 
     /**
-    * Decrease quantity
-    * */
+     * Decrease quantity
+     */
     public void decrement(View view) {
         if (quantity > 0) {
             quantity -= 1;
@@ -136,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     /* *
     * Resets quantity to 0, clears name field and selected choices
     * */
-    //TODO clear choices when reset button is hit
+    //TODO put checkboxes in an array
     public void Reset(View view) {
        /* Resets quantity to 0 */
         quantity = 0;
@@ -147,11 +186,19 @@ public class MainActivity extends AppCompatActivity {
         customerNameField.getText().clear();
 
         /* Create instances of the RadioGroup and clears selected radio buttons */
-        RadioGroup milkGroup = (RadioGroup)findViewById(R.id.milk);
-        RadioGroup sugarGroup = (RadioGroup)findViewById(R.id.sugar);
-        milkGroup.clearCheck();
+        RadioGroup milkGroup1 = (RadioGroup) findViewById(R.id.milk1);
+        RadioGroup milkGroup2 = (RadioGroup) findViewById(R.id.milk2);
+        RadioGroup sugarGroup = (RadioGroup) findViewById(R.id.sugar);
+        milkGroup1.clearCheck();
+        milkGroup2.clearCheck();
         sugarGroup.clearCheck();
 
+        CheckBox caramel = (CheckBox) findViewById(R.id.caramel);
+        CheckBox chocolate = (CheckBox) findViewById(R.id.chocolate);
+        CheckBox whipCream = (CheckBox) findViewById(R.id.whipCream);
+        caramel.setChecked(false);
+        chocolate.setChecked(false);
+        whipCream.setChecked(false);
         //displayMessage("");
     }
 
