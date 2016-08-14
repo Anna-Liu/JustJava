@@ -4,6 +4,7 @@
 Features I added that are different from the base app in the course:
 - Order reset button
 - Nicer layout and styling
-- RadioGroups for milk and sugar options
+- RadioGroups for milk and sugar options (milk options on two lines)
+- Required fields
 
 <br>Icon from [FreeIconsPNG](www.freeiconspng.com)
