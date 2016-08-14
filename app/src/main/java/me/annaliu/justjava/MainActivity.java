@@ -20,7 +20,7 @@ import java.text.DecimalFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
-//TODO make name field static after input
+//TODO show editText cursor when keyboard is visible
 //TODO instant running total of price after each selection
 
     /**
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup milkOptions1;
     private RadioGroup milkOptions2;
     private RadioGroup sugarOption;
+    private RadioButton milkButton;
+    private RadioButton sugarButton;
+
 
 
     @Override
@@ -98,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
             TextView name = (TextView) findViewById(R.id.nameField);
             String customerName = name.getText().toString();
+            String sugarChoice = findSugarChoice();
+            String milkChoice = findMilkChoice();
 
             String total = calculatePrice(quantity, hasWhippedCream, hasCaramel, hasChocolate); //calls the calculatePrice method and stores the return value
-            String orderSummary = createOrderSummary(total, customerName, hasWhippedCream, hasCaramel, hasChocolate);
+            String orderSummary = createOrderSummary(total, customerName, sugarChoice, milkChoice, hasWhippedCream, hasCaramel, hasChocolate);
 //        displayMessage(orderSummary);
 
             /**
@@ -129,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
         Double formattedPrice = Double.parseDouble(basePrice); //converts string to double
 
         if (WhippedCream) {
-            formattedPrice += 0.2;
+            formattedPrice += 0.2; //cost of whip cream = $0.20
         }
         if (Caramel) {
-            formattedPrice += 0.2;
+            formattedPrice += 0.2; //cost of caramel = $0.20
         }
         if (Chocolate) {
-            formattedPrice += 0.5;
+            formattedPrice += 0.5; //cost of chocolate = $0.50
         }
 
         double total = quantity * formattedPrice;
@@ -153,9 +158,11 @@ public class MainActivity extends AppCompatActivity {
      * @param addChocolate shows if customer wants chocolate.
      */
     //TODO add milk and sugar option in order summary
-    private String createOrderSummary(String total, String customerName, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
+    private String createOrderSummary(String total, String customerName, String sugar, String milk, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
         String summaryMessage = getString(R.string.name, customerName);
         summaryMessage += "\n\n" + getString(R.string.quantity_summary, quantity);
+        summaryMessage += "\n\n" + getString(R.string.sugar_summary, sugar);
+        summaryMessage += "\n" + getString(R.string.milk_summary, milk);
         summaryMessage += "\n\n" + getString(R.string.whip_cream_summary, addWhipCream);
         summaryMessage += "\n" + getString(R.string.caramel_summary, addCaramel);
         summaryMessage += "\n" + getString(R.string.chocolate_summary, addChocolate);
@@ -232,5 +239,32 @@ public class MainActivity extends AppCompatActivity {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
+
+
+    /**
+     * This retrieves the selected radio button for the sugar radio group.
+     */
+    public String findSugarChoice() {
+        int selectedId = sugarOption.getCheckedRadioButtonId();
+        sugarButton = (RadioButton) findViewById(selectedId);
+        return sugarButton.getText().toString();
+    }
+
+
+    /**
+     * This retrieves the selected radio button for the milk radio group.
+     */
+    public String findMilkChoice() {
+        if (milkOptions1.getCheckedRadioButtonId() != -1){
+            int selectedId = milkOptions1.getCheckedRadioButtonId();
+            milkButton = (RadioButton) findViewById(selectedId);
+            return milkButton.getText().toString();
+        } else {
+            int selectedId = milkOptions2.getCheckedRadioButtonId();
+            milkButton = (RadioButton) findViewById(selectedId);
+            return milkButton.getText().toString();
+        }
+    }
+
 
 }

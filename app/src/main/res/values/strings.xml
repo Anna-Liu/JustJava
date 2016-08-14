@@ -66,6 +66,8 @@
     <!-- Order summary message for the body of the email.[CHAR LIMIT=None] -->
     <string name="name">Name: <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
     <string name="quantity_summary">QUANTITY: <xliff:g id="coffeeQuantity" example="2">%d</xliff:g></string>
+    <string name="milk_summary">Milk Type: <xliff:g id="milkOption" example="whole">%s</xliff:g></string>
+    <string name="sugar_summary">Sugar: <xliff:g id="sugarOption" example="Yes">%s</xliff:g></string>
     <string name="whip_cream_summary">Whipped Cream: <xliff:g id="addCream" example="true">%b</xliff:g></string>
     <string name="caramel_summary">Caramel: <xliff:g id="addCaramel" example="true">%b</xliff:g></string>
     <string name="chocolate_summary">Chocolate: <xliff:g id="addChocolate" example="true">%b</xliff:g></string>

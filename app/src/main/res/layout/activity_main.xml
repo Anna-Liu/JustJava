@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:hint="@string/customer_name"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:cursorVisible="false"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
