@@ -31,10 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup milkOptions1;
     private RadioGroup milkOptions2;
     private RadioGroup sugarOption;
-    private RadioButton milkButton;
-    private RadioButton sugarButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
         } else if (quantity == 0) { //required quantity field (cannot be 0)
             Toast.makeText(this, "Please select a quantity", Toast.LENGTH_SHORT).show();
-        } else if (milkOptions1.getCheckedRadioButtonId() == -1 && milkOptions2.getCheckedRadioButtonId() == -1) {//required milk field
+        } else if (milkOptions1.getCheckedRadioButtonId() == -1 && milkOptions2.getCheckedRadioButtonId() == -1) { //required milk field
             Toast.makeText(this, "Please select a milk option", Toast.LENGTH_SHORT).show();
         } else if (sugarOption.getCheckedRadioButtonId() == -1) { //required sugar field
             Toast.makeText(this, "Please select a sugar option", Toast.LENGTH_SHORT).show();
@@ -105,21 +101,8 @@ public class MainActivity extends AppCompatActivity {
             String milkChoice = findMilkChoice();
 
             String total = calculatePrice(quantity, hasWhippedCream, hasCaramel, hasChocolate); //calls the calculatePrice method and stores the return value
-            String orderSummary = createOrderSummary(total, customerName, sugarChoice, milkChoice, hasWhippedCream, hasCaramel, hasChocolate);
-//        displayMessage(orderSummary);
-
-            /**
-             * Email intent to send order summary by email
-             */
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse(getString(R.string.email))); // only email apps should handle this
-            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, customerName));
-            intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(Intent.createChooser(intent, getString(R.string.email_chooser)));
-            } else {
-                Toast.makeText(this, getString(R.string.email_error_toast), Toast.LENGTH_LONG).show();
-            }
+            String orderSummary = createOrderSummary(total, customerName, sugarChoice, milkChoice, hasWhippedCream, hasCaramel, hasChocolate); //calls the createOrderSummary method
+            emailIntent(customerName, orderSummary); //calls the emailIntent method
         }
     }
 
@@ -153,11 +136,12 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param total        is the order total
      * @param customerName is the customer's name from user input.
+     * @param sugar        is the customer's sugar preference.
+     * @param milk         is the customer's milk preference.
      * @param addWhipCream shows if customer wants whip cream.
      * @param addCaramel   shows if customer wants caramel.
      * @param addChocolate shows if customer wants chocolate.
      */
-    //TODO add milk and sugar option in order summary
     private String createOrderSummary(String total, String customerName, String sugar, String milk, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
         String summaryMessage = getString(R.string.name, customerName);
         summaryMessage += "\n\n" + getString(R.string.quantity_summary, quantity);
@@ -246,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public String findSugarChoice() {
         int selectedId = sugarOption.getCheckedRadioButtonId();
-        sugarButton = (RadioButton) findViewById(selectedId);
+        RadioButton sugarButton = (RadioButton) findViewById(selectedId);
         return sugarButton.getText().toString();
     }
 
@@ -255,14 +239,30 @@ public class MainActivity extends AppCompatActivity {
      * This retrieves the selected radio button for the milk radio group.
      */
     public String findMilkChoice() {
-        if (milkOptions1.getCheckedRadioButtonId() != -1){
+        if (milkOptions1.getCheckedRadioButtonId() != -1) {
             int selectedId = milkOptions1.getCheckedRadioButtonId();
-            milkButton = (RadioButton) findViewById(selectedId);
+            RadioButton milkButton = (RadioButton) findViewById(selectedId);
             return milkButton.getText().toString();
         } else {
             int selectedId = milkOptions2.getCheckedRadioButtonId();
-            milkButton = (RadioButton) findViewById(selectedId);
+            RadioButton milkButton = (RadioButton) findViewById(selectedId);
             return milkButton.getText().toString();
+        }
+    }
+
+
+    /**
+     * Email intent to send order summary by email
+     */
+    private void emailIntent(String customerName, String orderSummary) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse(getString(R.string.email))); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, customerName));
+        intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, getString(R.string.email_chooser)));
+        } else {
+            Toast.makeText(this, getString(R.string.email_error_toast), Toast.LENGTH_LONG).show();
         }
     }
 
