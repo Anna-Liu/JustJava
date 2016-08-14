@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
 //TODO make name field static after input
 //TODO instant running total of price after each selection
-//TODO make milk and sugar option mandatory
 
     /**
      * Global variables
@@ -31,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     public EditText customerNameField;
     private RadioGroup milkOptions1;
     private RadioGroup milkOptions2;
+    private RadioGroup sugarOption;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +40,20 @@ public class MainActivity extends AppCompatActivity {
 
         milkOptions1 = (RadioGroup) findViewById(R.id.milk1);
         milkOptions2 = (RadioGroup) findViewById(R.id.milk2);
+        sugarOption = (RadioGroup) findViewById(R.id.sugar);
+        customerNameField = (EditText) findViewById(R.id.nameField);
         milkOptions1.setOnCheckedChangeListener(listener1);
         milkOptions2.setOnCheckedChangeListener(listener2);
 
     }
+
     /**
      * This method clears the 2nd milk options radioGroup when options from the 1st group is selected.
      */
     private RadioGroup.OnCheckedChangeListener listener1 = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int i) {
-            if (i != -1){
+            if (i != -1) {
                 milkOptions2.setOnCheckedChangeListener(null); //removes listener
                 milkOptions2.clearCheck(); //clears the 2nd radio group
                 milkOptions2.setOnCheckedChangeListener(listener2); // resets listener
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup.OnCheckedChangeListener listener2 = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup radioGroup, int i) {
-            if (i != -1){
+            if (i != -1) {
                 milkOptions1.setOnCheckedChangeListener(null); //removes listener
                 milkOptions1.clearCheck(); //clears the 1st radio group
                 milkOptions1.setOnCheckedChangeListener(listener1); //resets listener
@@ -72,38 +76,45 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-
     /**
      * This method is called when the get total button is clicked.
      */
     public void submitOrder(View view) {
+        if (customerNameField.getText().toString().matches("")) { //required name field
+            Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
+        } else if (quantity == 0) { //required quantity field (cannot be 0)
+            Toast.makeText(this, "Please select a quantity", Toast.LENGTH_SHORT).show();
+        } else if (milkOptions1.getCheckedRadioButtonId() == -1 && milkOptions2.getCheckedRadioButtonId() == -1) {//required milk field
+            Toast.makeText(this, "Please select a milk option", Toast.LENGTH_SHORT).show();
+        } else if (sugarOption.getCheckedRadioButtonId() == -1) { //required sugar field
+            Toast.makeText(this, "Please select a sugar option", Toast.LENGTH_SHORT).show();
+        } else {
+            CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipCream);
+            boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+            CheckBox caramelCheckBox = (CheckBox) findViewById(R.id.caramel);
+            boolean hasCaramel = caramelCheckBox.isChecked();
+            CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate);
+            boolean hasChocolate = chocolateCheckBox.isChecked();
 
+            TextView name = (TextView) findViewById(R.id.nameField);
+            String customerName = name.getText().toString();
 
-        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipCream);
-        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
-        CheckBox caramelCheckBox = (CheckBox) findViewById(R.id.caramel);
-        boolean hasCaramel = caramelCheckBox.isChecked();
-        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate);
-        boolean hasChocolate = chocolateCheckBox.isChecked();
-
-        TextView name = (TextView) findViewById(R.id.nameField);
-        String customerName = name.getText().toString();
-
-        String total = calculatePrice(quantity, hasWhippedCream, hasCaramel, hasChocolate); //calls the calculatePrice method and stores the return value
-        String orderSummary = createOrderSummary(total, customerName, hasWhippedCream, hasCaramel, hasChocolate);
+            String total = calculatePrice(quantity, hasWhippedCream, hasCaramel, hasChocolate); //calls the calculatePrice method and stores the return value
+            String orderSummary = createOrderSummary(total, customerName, hasWhippedCream, hasCaramel, hasChocolate);
 //        displayMessage(orderSummary);
 
-        /**
-         * Email intent to send order summary by email
-         */
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse(getString(R.string.email))); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, customerName));
-        intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(Intent.createChooser(intent, getString(R.string.email_chooser)));
-        } else {
-            Toast.makeText(this, getString(R.string.email_error_toast), Toast.LENGTH_LONG).show();
+            /**
+             * Email intent to send order summary by email
+             */
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse(getString(R.string.email))); // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.subject, customerName));
+            intent.putExtra(Intent.EXTRA_TEXT, orderSummary); //populates email body with the order summary
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(Intent.createChooser(intent, getString(R.string.email_chooser)));
+            } else {
+                Toast.makeText(this, getString(R.string.email_error_toast), Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -141,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
      * @param addCaramel   shows if customer wants caramel.
      * @param addChocolate shows if customer wants chocolate.
      */
+    //TODO add milk and sugar option in order summary
     private String createOrderSummary(String total, String customerName, boolean addWhipCream, boolean addCaramel, boolean addChocolate) {
         String summaryMessage = getString(R.string.name, customerName);
         summaryMessage += "\n\n" + getString(R.string.quantity_summary, quantity);
@@ -182,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
         displayQuantity(0);
 
         /* Clears name field */
-        customerNameField = (EditText) findViewById(R.id.nameField);
         customerNameField.getText().clear();
 
         /* Create instances of the RadioGroup and clears selected radio buttons */
@@ -193,12 +204,14 @@ public class MainActivity extends AppCompatActivity {
         milkGroup2.clearCheck();
         sugarGroup.clearCheck();
 
+        /* Create instances of the checkBoxes and un-checks them */
         CheckBox caramel = (CheckBox) findViewById(R.id.caramel);
         CheckBox chocolate = (CheckBox) findViewById(R.id.chocolate);
         CheckBox whipCream = (CheckBox) findViewById(R.id.whipCream);
         caramel.setChecked(false);
         chocolate.setChecked(false);
         whipCream.setChecked(false);
+
         //displayMessage("");
     }
 
