@@ -80,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         if (customerNameField.getText().toString().matches("")) { //required name field
-            Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.name_toast), Toast.LENGTH_SHORT).show();
         } else if (quantity == 0) { //required quantity field (cannot be 0)
-            Toast.makeText(this, "Please select a quantity", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.quantity_toast), Toast.LENGTH_SHORT).show();
         } else if (milkOptions1.getCheckedRadioButtonId() == -1 && milkOptions2.getCheckedRadioButtonId() == -1) { //required milk field
-            Toast.makeText(this, "Please select a milk option", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.milk_toast), Toast.LENGTH_SHORT).show();
         } else if (sugarOption.getCheckedRadioButtonId() == -1) { //required sugar field
-            Toast.makeText(this, "Please select a sugar option", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.sugar_toast), Toast.LENGTH_SHORT).show();
         } else {
             CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipCream);
             boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
@@ -212,16 +212,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number); // "" necessary to turn int number into a string (quantity_text_view accepts only strings)
-    }
-
-
-    /**
-     * This method displays the order summary on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
+        String numberAsText = Integer.toString(number);//necessary to convert int number into a string because quantity_text_view accepts only strings
+        quantityTextView.setText(numberAsText);
     }
 
 

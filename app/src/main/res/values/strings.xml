@@ -58,6 +58,14 @@
     <!-- Toast text that pops up when the user tries to decrease the quantity to less than 0. [CHAR LIMIT=100] -->
     <string name="quantity_toast">Please select a valid quantity</string>
 
+    <!-- Toast text that pops up when the name field is empty. [CHAR LIMIT=100] -->
+    <string name="name_toast">Please enter a name</string>
+
+    <!-- Toast text that pops up when user did not select a sugar preference. [CHAR LIMIT=100] -->
+    <string name="sugar_toast">Please indicate your sugar preference</string>
+
+    <!-- Toast text that pops up when the user did not select a milk preference. [CHAR LIMIT=100] -->
+    <string name="milk_toast">Please select a milk option</string>
 
     <!--///////////////////////-->
     <!-- Order Summary Strings -->

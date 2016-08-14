@@ -26,13 +26,15 @@
     <string name="customization_opt">Opciones de Personalización</string>
     <string name="coffee_base_price">Precio Base del Café: $</string>
     <string name="customer_name">Nombre del Cliente</string>
-    <string name="quantity_toast">Escoja una cantidad válido por favor</string>
+    <string name="quantity_toast">Escoja una cantidad válido, por favor</string>
 
 
     <!-- Order Summary Strings -->
 
     <string name="name">Nombre: <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
     <string name="quantity_summary">CANTIDAD: <xliff:g id="coffeeQuantity" example="2">%d</xliff:g></string>
+    <string name="milk_summary">Tipo de Leche: <xliff:g id="milkOption" example="whole">%s</xliff:g></string>
+    <string name="sugar_summary">Azúcar: <xliff:g id="sugarOption" example="Yes">%s</xliff:g></string>
     <string name="whip_cream_summary">Crema Batida: <xliff:g id="addCream" example="true">%b</xliff:g></string>
     <string name="caramel_summary">Caramelo: <xliff:g id="addCaramel" example="true">%b</xliff:g></string>
     <string name="chocolate_summary">Chocolate: <xliff:g id="addChocolate" example="true">%b</xliff:g></string>
@@ -45,5 +47,8 @@
     <string name="subject">Sólo Java Orden para <xliff:g id="customerName" example="Anna">%s</xliff:g></string>
     <string name="email_chooser">Para Enviar Orden:</string>
     <string name="email_error_toast">Error: No hay aplicación de correo electrónico</string>
+    <string name="milk_toast">Seleccione un tipo de leche, por favor</string>
+    <string name="name_toast">Introduzca un nombre, por favor</string>
+    <string name="sugar_toast">Indique su preferencia de azúcar, por favor</string>
 
 </resources>
